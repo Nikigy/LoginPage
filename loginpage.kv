@@ -1,0 +1,135 @@
+LoginManager:
+    LoginScreen:
+        name: "login"
+    RegisterScreen:
+        name: "register"
+    MainScreen:
+        name: "main"
+
+<LoginScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 50
+        
+        Label:
+            text: "Welcome to MyApp"
+            font_size: 30
+            size_hint_y: None
+            height: 50
+        
+        TextInput:
+            id: username_input
+            hint_text: "Username"
+            size_hint_y: None
+            height: 50
+        
+        TextInput:
+            id: password_input
+            hint_text: "Password"
+            password: True
+            size_hint_y: None
+            height: 50
+        
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 50
+            on_press: root.login(username_input.text, password_input.text)
+        
+        Button:
+            text: "Register"
+            size_hint_y: None
+            height: 50
+            on_press: root.manager.current = "register"
+
+<RegisterScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 50
+
+        Label:
+            text: "Welcome to MyApp"
+            font_size: 30
+            height: 50
+
+        BoxLayout:
+            orientation: "vertical"
+            Label:
+                text: "Password Requirements:"
+                font_size: 20
+            Label:
+                id: password_length_label
+                text: "At least 8 characters"
+            Label:
+                id: capital_letter_label
+                text: "At least 1 capital letter"
+            Label:
+                id: lowercase_letter_label
+                text: "At least 1 lowercase letter"
+            Label:
+                id: number_label
+                text: "At least 1 number"
+            Label:
+                id: special_character_label
+                text: "At least 1 special character"
+            Label:
+                id: matching_passwords_label
+                text: "Passwords must match"
+        
+        TextInput:
+            id: username_input
+            hint_text: "Username"
+            size_hint_y: None
+            height: 50
+        
+        TextInput:
+            id: password_input
+            hint_text: "Password"
+            password: True
+            size_hint_y: None
+            height: 50
+            on_text: root.check_password_requirements(password_input.text)
+        
+        TextInput:
+            id: confirm_password_input
+            hint_text: "Confirm Password"
+            password: True
+            size_hint_y: None
+            height: 50
+            on_text: root.check_matching_passwords(password_input.text, confirm_password_input.text)
+        
+        Button:
+            text: "Register"
+            size_hint_y: None
+            height: 50
+            on_press: root.register(username_input.text, password_input.text)
+        
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 50
+            on_press: root.manager.current = "login"
+
+<MainScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 50
+        
+        Label:
+            text: "Welcome to MyApp"
+            id: welcome_label
+            font_size: 30
+            size_hint_y: None
+            height: 50
+
+        Label:
+            id: greeting_label
+            font_size: 30
+            size_hint_y: None
+            height: 50
+        
+        Button:
+            text: "Logout"
+            size_hint_y: None
+            height: 50
+            on_press: root.manager.current = "login"
