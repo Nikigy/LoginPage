@@ -20,31 +20,26 @@ class RegisterScreen(Screen):
         special_characters = "!@#$%^&*()_+{}:\"<>?|[];',./`~"
         if len(password) <= 8:
             self.manager.get_screen("register").ids.password_length_label.color = (1, 0, 0, 1)
-            return False
         else:
             self.manager.get_screen("register").ids.password_length_label.color = (0, 1, 0, 1)
 
         if not any(char.isdigit() for char in password):
             self.manager.get_screen("register").ids.number_label.color = (1, 0, 0, 1)
-            return False
         else:
             self.manager.get_screen("register").ids.number_label.color = (0, 1, 0, 1)
 
         if not any(char.isupper() for char in password):
             self.manager.get_screen("register").ids.capital_letter_label.color = (1, 0, 0, 1)
-            return False
         else:
             self.manager.get_screen("register").ids.capital_letter_label.color = (0, 1, 0, 1)
 
         if not any(char.islower() for char in password):
             self.manager.get_screen("register").ids.lowercase_letter_label.color = (1, 0, 0, 1)
-            return False
         else:
             self.manager.get_screen("register").ids.lowercase_letter_label.color = (0, 1, 0, 1)
 
         if not any(char in special_characters for char in password):
             self.manager.get_screen("register").ids.special_character_label.color = (1, 0, 0, 1)
-            return False
         else:
             self.manager.get_screen("register").ids.special_character_label.color = (0, 1, 0, 1)
             
